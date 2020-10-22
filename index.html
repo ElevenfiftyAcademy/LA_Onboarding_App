@@ -5,7 +5,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>reveal.js</title>
+	<title>EFA Learning Assistant Onboarding</title>
+
+	<link rel="icon" type="image/x-icon" href="./assets/efa_favicon.ico" />
 
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
@@ -22,6 +24,12 @@
 		#debugging .debug_info p {
 			font-size: 30px !important;
 		}
+
+		section .sideBySide .fragment {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 	</style>
 </head>
 
@@ -37,6 +45,7 @@
 			</section>
 
 			<section id="new_hire_checklist">
+
 				<section>
 					<h2>New Hire Checklist</h2>
 					<p>
@@ -46,6 +55,7 @@
 						following items.*
 					</p>
 				</section>
+
 				<section>
 					<ul class="checklist">
 						<li class="fragment">Paperwork – W9 filled out and submitted to finance department (<a
@@ -63,15 +73,18 @@
 						<li class="fragment">Meet with instructor of class to discuss class expectations/assistance</li>
 					</ul>
 				</section>
+
 			</section>
 
 			<section id="debugging">
+
 				<section>
 					<h3>Getting started helping students and debugging</h3>
 					<p class="fragment">Debugging can be tricky - but there are a few things that you can do to improve
 						your own bug hunting skills, as well as help new programmers adequately read and understand the
 						error messages they're receiving.</p>
 				</section>
+
 				<section class="debug_info">
 					<p class="fragment">The first step in debugging code is simply figuring out <i>what</i> the problem
 						is. Sometimes this is obvious - the error message will point to a specific line of the program,
@@ -84,7 +97,12 @@
 					<p class="fragment">With JavaScript, most of our errors fit into two categories: syntax errors and
 						runtime errors.</p>
 				</section>
-				<section class="syntax_errors">
+
+			</section>
+
+			<section class="syntax_errors">
+
+				<section>
 					<h3>Syntax Errors</h3>
 					<p class="fragment">The most common source of errors for new programmers is syntax errors.</p>
 					<p class="fragment">
@@ -93,9 +111,36 @@
 					</p>
 					<p class="fragment">Let's look at a few examples of syntax errors</p>
 				</section>
+
 				<section data-auto-animate>
-					<p data-id="code-title">A students CSS is not being pulled in to their application, and they're receiving the following error in their console.</p>
-					<pre class="fragment" data-id="code-animation"><code class="html" data-trim data-line-numbers>
+					<p data-id="code-title">E.g. A students CSS is not being pulled in to their application, and they're
+						receiving the following error in their console:</p>
+					<img class="fragment" src="./assets/ss33.png">
+					<p class="fragment">So where do you go from here? Since we know that the CSS file is not being
+						imported
+						correctly, we can ask ourselves the following things:</p>
+					<ul>
+						<li class="fragment">What is the name of the CSS file?</li>
+						<li class="fragment">Where do we reference the CSS file in the code, and does the code match the
+							file name iteself?</li>
+					</ul>
+				</section>
+
+				<section>
+					<p>When working with syntax errors, it's extremely important to read line-by-line, letter-by-letter,
+						and to cross reference for any discrepancies.
+					</p>
+					<div class="sideBySide">
+						<div class="fragment">
+							<img src="./assets/ss35.png">
+							<p class="blurb">Looking at our files, we can see that our CSS file is named <i>styles.css</i>.</p>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<p>We can now cross reference our code to make sure what we're importing matches our file named <i>styles.css</i></p>
+					<pre class="fragment" data-id="code-animation"><code class="html" data-trim data-line-numbers="5">
 						&lt;head&gt;
 						  <meta charset="UTF-8">
 						  <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -103,52 +148,60 @@
 						  <link type='text/css' rel="stylesheet" href="style.css">
 						&lt;/head&gt;
 					</code></pre>
+					<p class="fragment">Notice on line 5, where we're referencing our CSS file, that we have a typo - our file name and import of that file do not match. Typos are extremely easy to overlook, so again, be sure to read line-by-line & character-by-character!</p>
 				</section>
-				<section data-auto-animate>
+
+				<!-- <section data-auto-animate>
 					<h2 data-id="code-title">With animations</h2>
 					<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|4,8-11|17|22-24"><script type="text/template">
-						import React, { useState } from 'react';
+					import React, { useState } from 'react';
 
-						function Example() {
-						  const [count, setCount] = useState(0);
+					function Example() {
+					  const [count, setCount] = useState(0);
 
-						  return (
-						    <div>
-						      <p>You clicked {count} times</p>
-						      <button onClick={() => setCount(count + 1)}>
-						        Click me
-						      </button>
-						    </div>
-						  );
-						}
+					  return (
+						<div>
+						  <p>You clicked {count} times</p>
+						  <button onClick={() => setCount(count + 1)}>
+							Click me
+						  </button>
+						</div>
+					  );
+					}
 
-						function SecondExample() {
-						  const [count, setCount] = useState(0);
+					function SecondExample() {
+					  const [count, setCount] = useState(0);
 
-						  return (
-						    <div>
-						      <p>You clicked {count} times</p>
-						      <button onClick={() => setCount(count + 1)}>
-						        Click me
-						      </button>
-						    </div>
-						  );
-						}
+					  return (
+						<div>
+						  <p>You clicked {count} times</p>
+						  <button onClick={() => setCount(count + 1)}>
+							Click me
+						  </button>
+						</div>
+					  );
+					}
 					</script></code></pre>
-				</section>
+				</section> -->
+
 			</section>
 
 			<section>
+
 				<section>
 					<h3>Learning Gym Information</h3>
 				</section>
+
 				<section>
 					<ul class="checklist">
-						<li class="fragment">During the time leading up to a new class, put office hours in the Learning
+						<li class="fragment">During the time leading up to a new class, put office hours in the
+							Learning
 							Gym to assist incoming students with prework
 							<ul>
-								<li class="fragment">Be sure to send a Slack message to the class in the general channel
-									informing them of when you have office hours, so they know help is available</li>
+								<li class="fragment">Be sure to send a Slack message to the class in the general
+									channel
+									informing them of when you have office hours, so they know help is available
+								</li>
 								<li class="fragment">All students should have access to the Learning Gym after
 									orientation</li>
 							</ul>
@@ -157,23 +210,27 @@
 							order to offer extra help to not only to your current students, but students in other
 							classes as well</li>
 				</section>
+
 			</section>
 
 			<section>
+
 				<section>
 					<h3>Additional Information</h3>
 				</section>
+
 				<section>
 					<ul class="checklist">
 						<li class="fragment">All LAs can bill up to 45 hours per week
 							<ul class="fragment">
-								<li>Intro to Codes are held a few times a month. Working an Intro to Code does NOT count
+								<li>Intro to Codes are held a few times a month. Working an Intro to Code does NOT
+									count
 									towards your 45 hours per week. When you work an ITC, please note that on your
 									invoice. The amount for working an ITC is $150 </li>
 							</ul>
 						</li>
-
 				</section>
+
 			</section>
 
 		</div>
