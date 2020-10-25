@@ -30,6 +30,10 @@
 			justify-content: center;
 			align-items: center;
 		}
+
+		.example_two p {
+			font-size: 20px !important
+		}
 	</style>
 </head>
 
@@ -102,7 +106,7 @@
 
 			<section class="syntax_errors">
 
-				<section>
+				<section data-auto-animate>
 					<h3>Syntax Errors</h3>
 					<p class="fragment">The most common source of errors for new programmers is syntax errors.</p>
 					<p class="fragment">
@@ -112,8 +116,12 @@
 					<p class="fragment">Let's look at a few examples of syntax errors</p>
 				</section>
 
+				<section>
+					<h1>Example 1</h1>
+				</section>
+
 				<section data-auto-animate>
-					<p data-id="code-title">E.g. A students CSS is not being pulled in to their application, and they're
+					<p data-id="code-title">A students CSS is not being pulled in to their application, and they're
 						receiving the following error in their console:</p>
 					<img class="fragment" src="./assets/ss33.png">
 					<p class="fragment">So where do you go from here? Since we know that the CSS file is not being
@@ -149,6 +157,40 @@
 						&lt;/head&gt;
 					</code></pre>
 					<p class="fragment">Notice on line 5, where we're referencing our CSS file, that we have a typo - our file name and import of that file do not match. Typos are extremely easy to overlook, so again, be sure to read line-by-line & character-by-character!</p>
+				</section>
+
+				<section>
+					<h1>Example 2</h1>
+				</section>
+
+				<section data-auto-animate>
+					<p data-id="code-title">A student asks you to look at the following block of code, as they are receiving some errors and not getting the output they expect:</p>
+					<pre class="fragment" data-id="code-animation"><code class="JavaScript" data-trim data-line-numbers="">
+						function displayEvenNumbers() {
+						  let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+						  let evenNumbers = [];
+						  for (let i = 0; i < numbers.length; i++;) {
+						    if (numbers[i] % 2 === 0); {
+						      evenNumbers.push(numbers[i]);
+						    }
+						  return evenNumbers;
+						}
+						
+						let returnValue = displayEvenNumbers(); // should return [2,4,6,8]
+						console.log(returnValue);
+					</code></pre>
+				</section>
+
+				<section class="example_two">
+					<p>Although Visual Studio Code is extremely helpful and will point out some snytax errors in the code, that's not always the case. Syntax errors - especially in larger blocks of code - are very easy to overlook, so always have students run their code for you as a starting point so you can see what errors they are receiving.</p>
+					<p class="fragment">When running the code block from the previous slide, we're presented with the following error message:</p>
+					<img class="fragment" src="./assets/ss38.png">
+					<p class="fragment">Notice that we are receiving a syntax error - we have an unexpected token of ';' at the end of the for loop.</p>
+				</section>
+
+				<section>
+					<p>Lets break down the above error message in a bit more detail:</p>
+					
 				</section>
 
 				<!-- <section data-auto-animate>
@@ -207,7 +249,7 @@
 							</ul>
 						</li>
 						<li class="fragment">Once class begins, please still put office hours in the Learning Gym in
-							order to offer extra help to not only to your current students, but students in other
+							order to offer extra help to not only your current students, but students in other
 							classes as well</li>
 				</section>
 
