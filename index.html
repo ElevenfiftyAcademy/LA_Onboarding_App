@@ -34,6 +34,36 @@
 		.example_two p {
 			font-size: 20px !important
 		}
+
+		.example_two_breakdown {
+			font-size: 20px !important;
+		}
+
+		.example_two_breakdown img {
+			height: 300px;
+			width: auto;
+		}
+
+		.example_two_continued p {
+			font-size: 20px !important;
+		}
+
+		.example_two_continued li {
+			font-size: 16px !important;
+		}
+
+		.example_two_continued img {
+			height: 300px;
+			width: auto;
+		}
+
+		.example_two_fix p {
+			font-size: 26px !important;
+		}
+
+		.additonal_tips li {
+			font-size: 24px !important;
+		}
 	</style>
 </head>
 
@@ -141,13 +171,15 @@
 					<div class="sideBySide">
 						<div class="fragment">
 							<img src="./assets/ss35.png">
-							<p class="blurb">Looking at our files, we can see that our CSS file is named <i>styles.css</i>.</p>
+							<p class="blurb">Looking at our files, we can see that our CSS file is named
+								<i>styles.css</i>.</p>
 						</div>
 					</div>
 				</section>
 
 				<section>
-					<p>We can now cross reference our code to make sure what we're importing matches our file named <i>styles.css</i></p>
+					<p>We can now cross reference our code to make sure what we're importing matches our file named
+						<i>styles.css</i></p>
 					<pre class="fragment" data-id="code-animation"><code class="html" data-trim data-line-numbers="5">
 						&lt;head&gt;
 						  <meta charset="UTF-8">
@@ -156,7 +188,9 @@
 						  <link type='text/css' rel="stylesheet" href="style.css">
 						&lt;/head&gt;
 					</code></pre>
-					<p class="fragment">Notice on line 5, where we're referencing our CSS file, that we have a typo - our file name and import of that file do not match. Typos are extremely easy to overlook, so again, be sure to read line-by-line & character-by-character!</p>
+					<p class="fragment">Notice on line 5, where we're referencing our CSS file, that we have a typo -
+						our file name and import of that file do not match. Typos are extremely easy to overlook, so
+						again, be sure to read line-by-line & character-by-character!</p>
 				</section>
 
 				<section>
@@ -164,13 +198,14 @@
 				</section>
 
 				<section data-auto-animate>
-					<p data-id="code-title">A student asks you to look at the following block of code, as they are receiving some errors and not getting the output they expect:</p>
+					<p data-id="code-title">A student asks you to look at the following block of code, as they are
+						receiving some errors and not getting the output they expect:</p>
 					<pre class="fragment" data-id="code-animation"><code class="JavaScript" data-trim data-line-numbers="">
 						function displayEvenNumbers() {
 						  let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
 						  let evenNumbers = [];
 						  for (let i = 0; i < numbers.length; i++;) {
-						    if (numbers[i] % 2 === 0); {
+						    if (numbers[i] % 2 === 0) {
 						      evenNumbers.push(numbers[i]);
 						    }
 						  return evenNumbers;
@@ -182,49 +217,124 @@
 				</section>
 
 				<section class="example_two">
-					<p>Although Visual Studio Code is extremely helpful and will point out some snytax errors in the code, that's not always the case. Syntax errors - especially in larger blocks of code - are very easy to overlook, so always have students run their code for you as a starting point so you can see what errors they are receiving.</p>
-					<p class="fragment">When running the code block from the previous slide, we're presented with the following error message:</p>
+					<p>Although Visual Studio Code is extremely helpful and will point out some snytax errors in the
+						code, that's not always the case. Syntax errors - especially in larger blocks of code - are very
+						easy to overlook, so always have students run their code for you as a starting point so you can
+						see what errors they are receiving.</p>
+					<p class="fragment">When running the code block from the previous slide, we're presented with the
+						following error message:</p>
 					<img class="fragment" src="./assets/ss38.png">
-					<p class="fragment">Notice that we are receiving a syntax error - we have an unexpected token of ';' at the end of the for loop.</p>
+					<p class="fragment">Notice that we are receiving a syntax error - we have an unexpected token of ';'
+						at the end of the for loop.</p>
+				</section>
+
+				<section class="example_two_breakdown">
+					<p>Lets break down the above error message in a bit more detail:</p>
+					<img class="fragment" src="./assets/ss38_ed.png">
+					<ul>
+						<li class="fragment">1.) This is the relative path of the file where the code is breaking. The
+							number at the end of the path (4 in this case), denotes the line in which the code is
+							actually breaking.</li>
+						<li class="fragment">2.) This shows us the actual line of code that is breaking. Notice the
+							carrot (^) at the end of the loop - this denotes the problem that was identified in the
+							code.</li>
+						<li class="fragment">3.) This line tells us what type of error we received (syntax error in this
+							case), and what that syntax error is - we have an unexpected token of ';'.</li>
+					</ul>
+					<p class="fragment">Putting together the information we gathered above from the error message, we
+						now know that we have a syntactical error of unexpected token on line 4 of our code, and the
+						unexpected token we're looking for is a semi-colon ';' at the end of our for loop. If we go back
+						to our code now, we should know exactly where to look to fix the error.</p>
 				</section>
 
 				<section>
-					<p>Lets break down the above error message in a bit more detail:</p>
-					
+					<pre class="fragment" data-id="code-animation"><code class="JavaScript" data-trim data-line-numbers="4">
+						function displayEvenNumbers() {
+						  let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+						  let evenNumbers = [];
+						  for (let i = 0; i < numbers.length; i++;) {
+						    if (numbers[i] % 2 === 0) {
+						      evenNumbers.push(numbers[i]);
+						    }
+						  return evenNumbers;
+						}
+						
+						let returnValue = displayEvenNumbers(); // should return [2,4,6,8]
+						console.log(returnValue);
+					</code></pre>
+					<p class="fragment">Just like our error message said, we have have an unexpected token of ';' at the
+						end of the for loop - so let's take that out. After fixing an error, always re-run the code to
+						make sure there are no additional errors.</p>
 				</section>
 
-				<!-- <section data-auto-animate>
-					<h2 data-id="code-title">With animations</h2>
-					<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|4,8-11|17|22-24"><script type="text/template">
-					import React, { useState } from 'react';
+				<section class="example_two_continued">
+					<p>After re-running the code, we're still receiving an error:</p>
+					<img class="fragment" src="./assets/ss43.png">
+					<p class="fragment">Unfortunately, this error message doesn't give us a lot of information. The
+						error message we're receiving says that the error is coming from our console.log statement -
+						even though everything is structured correctly and we're referencing a valid variable. We can
+						now follow the reverse chain of events to narrow down where exactly the problem is coming from:
+					</p>
+					<ul>
+						<li class="fragment">Error is coming from console.log statement</li>
+						<li class="fragment">console.log statement is referencing a valid variable</li>
+						<li class="fragment">Since the variable being referenced is valid, we need to go look at the
+							variable itself. The variable of 'returnValue' holds the call to the function of
+							displayEvenNumbers() - pointing us to the function as the cause of the problem - we now know
+							the problem is within the function itself.</li>
+					</ul>
+				</section>
 
-					function Example() {
-					  const [count, setCount] = useState(0);
+				<section>
+					<p class="fragment">Alternatively, we can also check out the PROBLEMS tab for any useful
+						information:</p>
+					<img src="./assets/ss44.png" alt="VS Code PROBLEMS tab" class="fragment">
+					<p class="fragment">This gives us a bit more information as to what the problem within the function
+						actually is. The error we receieved was, "The parser expected to find a '}' to match the '{'
+						token here" - which tells us that we're missing a closing curly brace.</p>
+				</section>
 
-					  return (
-						<div>
-						  <p>You clicked {count} times</p>
-						  <button onClick={() => setCount(count + 1)}>
-							Click me
-						  </button>
-						</div>
-					  );
-					}
+				<section class="example_two_fix">
+					<p>Looking back at our code, we can now double check each instance of our opening curly braces to
+						make sure we have a closing curly brace to match, starting with the outermost scoped body:</p>
+					<pre class="fragment" data-id="code-animation"><code class="JavaScript" data-trim data-line-numbers="1,9|4|5,7">
+						function displayEvenNumbers() {
+						  let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+						  let evenNumbers = [];
+						  for (let i = 0; i < numbers.length; i++;) {
+						    if (numbers[i] % 2 === 0) {
+						      evenNumbers.push(numbers[i]);
+						    }
+						  return evenNumbers;
+						}
+						
+						let returnValue = displayEvenNumbers(); // should return [2,4,6,8]
+						console.log(returnValue);
+					</code></pre>
+					<p class="fragment">Notice that we're missing a closing curly brace for the for loop. This is also
+						where the structure of the code is extremely important - it's much easier to spot missing
+						brackets or braces if the code is structured properly.</p>
+					<p class="fragment">Including a closing curly brace for the for loop will successfully debug the
+						code.</p>
+				</section>
 
-					function SecondExample() {
-					  const [count, setCount] = useState(0);
+			</section>
 
-					  return (
-						<div>
-						  <p>You clicked {count} times</p>
-						  <button onClick={() => setCount(count + 1)}>
-							Click me
-						  </button>
-						</div>
-					  );
-					}
-					</script></code></pre>
-				</section> -->
+			<section>
+
+				<section>
+					<h3>Additional Debug Information</h1>
+				</section>
+
+				<section class="additonal_tips">
+					<ul>
+						<li class="fragment">Have students properly structure the code so it's easy to read and understand.</li>
+						<li class="fragment">It’s possible for a program to run without throwing an obvious error, but still contain logic errors which cause it to behave differently than expected. Often these kinds of errors are more subtle and harder to identify. One key strategy is to insert extra console.log statements at various points in the program to find out what the program is doing at each point.</li>
+						<li class="fragment">We often see students try to write the whole solution in one go, and then get stuck because they’ve got a number of different errors in their program at the same time.
+							Encourage students to build their solution step by step, running their program each time they add a new piece. This way, if their program stops working, they know the culprit was the last piece that was added and where to look for issues in the code.</li>
+						<li class="fragment">Also called rubber duck debugging, this technique has you or the student explain what the code is doing line-by-line to each other or an inanimate object (like a rubber duck) - this is especially helpful for students when they don't have someone to walk through their code with them. The idea is that the process of describing each line of the program explicitly helps the describer pay closer attention to small details and assumptions, and can help them see solutions that they missed before.</li>
+					</ul>
+				</section>
 
 			</section>
 
